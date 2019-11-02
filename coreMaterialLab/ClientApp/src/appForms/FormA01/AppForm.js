@@ -31,15 +31,27 @@ export default function AppForm() {
         setCount(count + 1)
     }
 
+    function handleReset() {
+        // reset
+        setCount(0)
+    }
+
     return (
         <Fragment>
             {console.log('count', count)}
             <h1>{APP_TITLE}</h1>
             <p>{APP_DESCRIPTION}</p>
+
             <Button variant="contained" color="primary" onClick={handleClick}>
                 {count}
             </Button>
+            <Button variant="contained" color="secondary" onClick={handleReset}>
+                reset
+            </Button>
+
             <hr />
+
+            {/*Paper*/}
             <Paper className={classes.root}>
                 <Typography variant="h5" component="h3">
                     Tracing

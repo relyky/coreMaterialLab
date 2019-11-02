@@ -1,18 +1,34 @@
-import React, { Component } from 'react';
-import { Container } from 'reactstrap';
+import React from 'react'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Container from '@material-ui/core/Container'
 import { NavMenu } from './NavMenu';
 
-export class Layout extends Component {
-  static displayName = Layout.name;
-
-  render () {
+export default function Layout(props) {
     return (
-      <div>
-        <NavMenu />
-        <Container>
-          {this.props.children}
-        </Container>
-      </div>
+        <React.Fragment>
+            <CssBaseline />
+            <NavMenu />
+            <Container maxWidth="lg" style={{backgroundColor:'yellow'}} >
+                {props.children}
+            </Container>
+        </React.Fragment>
     );
-  }
 }
+
+//import { Container } from 'reactstrap';
+//import { NavMenu } from './NavMenu';
+
+//export class Layout extends Component {
+//  static displayName = Layout.name;
+
+//  render () {
+//    return (
+//      <div>
+//        <NavMenu />
+//        <Container>
+//          {this.props.children}
+//        </Container>
+//      </div>
+//    );
+//  }
+//}
