@@ -32,6 +32,12 @@ export function NavMenu() {
                     </ListItemIcon>
                     <ListItemText primary={`Fetch data`} />
                 </ListItem>
+                <ListItem button component={Link} to="/Form000">
+                    <ListItemIcon>
+                        <MailIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={`Form000`} />
+                </ListItem>
                 <ListItem button component={Link} to="/FormA01">
                     <ListItemIcon>
                         <MailIcon />
