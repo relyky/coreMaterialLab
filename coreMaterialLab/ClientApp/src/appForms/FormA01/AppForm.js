@@ -21,8 +21,8 @@ export default function AppForm() {
     }, []); // 等同 componentDidMount
 
     function handleInterval() {
-        console.log('interval', count) // 這個 count
-        setCount(count => count - 1)  // 與這個 count 不是同一個 count
+        console.log('interval', count) /// 怪奇現象：這個 count
+        setCount(count => count - 1)   /// 與這個 count 不是同一個 count
     }
 
     function handleDecrease() {
