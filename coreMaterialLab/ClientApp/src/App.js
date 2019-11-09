@@ -7,6 +7,7 @@ import { Counter } from './appForms/Counter'
 import Form000 from './appForms/Form000/AppForm'
 import FormA01 from './appForms/FormA01/AppForm'
 import FormB02 from './appForms/FormB02/AppForm'
+import FormC03 from './appForms/FormC03/AppForm'
 
 export default class App extends Component {
     static displayName = App.name;
@@ -20,6 +21,7 @@ export default class App extends Component {
                 <Route path='/Form000' component={Form000} />
                 <Route path='/FormA01' component={FormA01} />
                 <Route path='/FormB02' component={FormB02} />
+                <Route path='/FormC03' component={FormC03} />
             </Layout>
         )
     }
