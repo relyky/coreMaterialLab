@@ -4,6 +4,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
 
+import { useMousePosition, useWindowSize } from '../../Hooks/useMousePosition'
+
 const APP_TITLE = 'FormB02 Grid'
 const APP_DESCRIPTION = 'Grid Demo'
 
@@ -17,11 +19,7 @@ const useStyles = makeStyles(theme => ({
 
 function GridInfo() {
     const classes = useStyles()
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-
-    useEffect(() => {
-        window.addEventListener("resize", () => setWindowWidth(window.innerWidth))
-    }, []) // 等同 componentDidMount
+    const { w: windowWidth, h } = useWindowSize()
 
     return (
         <Fragment>
@@ -60,10 +58,13 @@ function GridInfo() {
 
 export default function AppForm() {
     const classes = useStyles()
+    const { x, y } = useMousePosition();
+
     return (
         <Fragment>
             <h1>{APP_TITLE}</h1>
             <p>{APP_DESCRIPTION}</p>
+            <p>{`mouse position: ${x},${y}`}</p>
 
             <GridInfo />
 
