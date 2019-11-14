@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Route } from 'react-router'
 import Layout from './components/Layout'
 import { Home } from './appForms/Home'
@@ -9,20 +9,17 @@ import FormA01 from './appForms/FormA01/AppForm'
 import FormB02 from './appForms/FormB02/AppForm'
 import FormC03 from './appForms/FormC03/AppForm'
 
-export default class App extends Component {
-    static displayName = App.name;
-
-    render() {
-        return (
-            <Layout>
-                <Route exact path='/' component={Home} />
-                <Route path='/counter' component={Counter} />
-                <Route path='/fetch-data' component={FetchData} />
-                <Route path='/Form000' component={Form000} />
-                <Route path='/FormA01' component={FormA01} />
-                <Route path='/FormB02' component={FormB02} />
-                <Route path='/FormC03' component={FormC03} />
-            </Layout>
-        )
-    }
+export default function App(props) {
+    return (
+        <Layout>
+            <Route exact path='/' component={Home} />
+            <Route path='/counter' component={Counter} />
+            <Route path='/fetch-data' component={FetchData} />
+            <Route path='/Form000' component={Form000} />
+            <Route path='/FormA01' component={FormA01} />
+            <Route path='/FormB02' component={FormB02} />
+            <Route path='/FormC03' component={FormC03} />
+        </Layout>
+    )
 }
+

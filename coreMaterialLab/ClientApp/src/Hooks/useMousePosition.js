@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react'
+﻿import React, { useState, useEffect, useDebugValue } from 'react'
 
 export function useMousePosition() {
     const [position, setPosition] = useState({ x: 0, y: 0 })
@@ -12,6 +12,7 @@ export function useMousePosition() {
         setPosition({ x: e.pageX, y: e.pageY })
     }
 
+    useDebugValue(position)
     return position
 }
 
@@ -29,5 +30,6 @@ export function useWindowSize() {
         setSize({ w: e.target.innerWidth, h: e.target.innerHeight})
     }
 
+    useDebugValue(size)
     return size
 }
