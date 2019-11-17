@@ -5,7 +5,7 @@ export default function InputText(props) {
     return (
         <input type='text'
             name={name}
-            value={value}
+            value={value||''}
             onChange={(e) => onChange(e.target.name, e.target.value)}
         />        
     )

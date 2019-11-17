@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useDebugValue } from 'react'
+﻿import { useState, useEffect, useDebugValue } from 'react'
 
 export function useMousePosition() {
     const [position, setPosition] = useState({ x: 0, y: 0 })

@@ -1,4 +1,4 @@
-﻿import React, { useReducer, createContext, useContext, useDebugValue } from 'react'
+﻿import React, { useReducer, createContext, useContext /*, useDebugValue*/ } from 'react'
 
 // ====== useReducer ======
 
@@ -16,9 +16,10 @@ function reducer(state /*formData*/, action) {
             // payload: object
             return { ...state, ...payload }
         }
+        default: {
+            throw new Error('invalid action.type!')
+        }
     }
-
-    throw new Error('invalid action.type!')
 }
 
 // 再包裝reducer成更易使用的指令
@@ -35,6 +36,7 @@ function useFormDataReducer(initialState) {
         dispatch({ type: 'ASSIGN_PROPS', payload })
     }
 
+    //useDebugValue(state)
     return [state, { assignValue, assignProps }]
 }
 
@@ -46,9 +48,9 @@ export default function useFormData() {
     return useContext(FormDataContext)
 }
 
-export function FormDataProvider({ children, initialState }) {
+export function FormDataProvider({ children, initialState /* object */}) {
     return (
-        <FormDataContext.Provider value={useFormDataReducer(initialState)}>
+        <FormDataContext.Provider value={useFormDataReducer(initialState || {})}>
             {children}
         </FormDataContext.Provider>)
 }

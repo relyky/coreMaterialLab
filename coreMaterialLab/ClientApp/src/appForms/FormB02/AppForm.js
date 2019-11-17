@@ -1,4 +1,4 @@
-﻿import React, { Fragment, useState, useEffect } from 'react'
+﻿import React, { Fragment /*, useState*/ /*, useEffect*/ } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
 
 function GridInfo() {
     const classes = useStyles()
-    const { w: windowWidth, h } = useWindowSize()
+    const { w: windowWidth /*, h: windowHeight*/ } = useWindowSize()
 
     return (
         <Fragment>
