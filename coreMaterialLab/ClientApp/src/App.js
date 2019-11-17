@@ -8,6 +8,7 @@ import Form000 from './appForms/Form000/AppForm'
 import FormA01 from './appForms/FormA01/AppForm'
 import FormB02 from './appForms/FormB02/AppForm'
 import FormC03 from './appForms/FormC03/AppForm'
+import FormD04 from './appForms/FormD04/appCtx'
 
 export default function App(props) {
     return (
@@ -19,6 +20,7 @@ export default function App(props) {
             <Route path='/FormA01' component={FormA01} />
             <Route path='/FormB02' component={FormB02} />
             <Route path='/FormC03' component={FormC03} />
+            <Route path='/FormD04' component={FormD04} />
         </Layout>
     )
 }
