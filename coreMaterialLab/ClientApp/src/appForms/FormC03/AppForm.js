@@ -1,7 +1,8 @@
 ﻿import React, { Fragment, useState, useEffect } from 'react'
-import Typography from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 
+import BasicTextFields from './widgets/BasicTextFields'
 import ButtonsSample from './widgets/ButtonsSample'
 
 const APP_TITLE = 'FormC03'
@@ -24,7 +25,7 @@ export default function AppForm() {
             <p>{APP_DESCRIPTION}</p>
 
             <ButtonsSample />
-
+            <BasicTextFields />
         </Fragment>
     )
 }
