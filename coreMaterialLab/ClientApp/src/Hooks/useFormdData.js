@@ -1,4 +1,4 @@
-ï»¿import React, { useReducer, createContext, useContext /*, useDebugValue*/ } from 'react'
+import React, { useReducer, createContext, useContext /*, useDebugValue*/ } from 'react'
 
 // ====== useReducer ======
 
@@ -22,16 +22,16 @@ function reducer(state /*formData*/, action) {
     }
 }
 
-// å†åŒ…è£reduceræˆæ›´æ˜“ä½¿ç”¨çš„æŒ‡ä»¤
+// ¦A¥]¸Ëreducer¦¨§ó©ö¨Ï¥Îªº«ü¥O
 function useFormDataReducer(initialState) {
     const [state, dispatch] = useReducer(reducer, initialState)
 
-    // åŒ…è£ dispatch action
+    // ¥]¸Ë dispatch action
     function assignValue(name, value) {
         dispatch({ type: 'ASSIGN_VALUE', name, value })
     }
 
-    // åŒ…è£ dispatch action
+    // ¥]¸Ë dispatch action
     function assignProps(payload) {
         dispatch({ type: 'ASSIGN_PROPS', payload })
     }
@@ -55,8 +55,8 @@ export function FormDataProvider({ children, initialState /* object */}) {
         </FormDataContext.Provider>)
 }
 
-/// æ‡‰ç”¨èªªæ˜
-// step 1: æ–¼ä¸Šå±¤å¦‚ App æˆ– AppForm è¨­å®šçµ„ç¹” 
+/// À³¥Î»¡©ú
+// step 1: ©ó¤W¼h¦p App ©Î AppForm ³]©w²ÕÂ´ 
 //   <FormDataProvider>
-// step 2: æ–¼å…¶ä¸‹å±¤æˆ–å…§å±¤function componnet å«ç”¨ï¼š
+// step 2: ©ó¨ä¤U¼h©Î¤º¼hfunction componnet ¥s¥Î¡G
 //   const [formData, { assignValue, assignProps }] = useFormData()

@@ -12,8 +12,9 @@ export default function AppForm() {
 
     useEffect(() => {
         assignProps({
-            myName: 'somebody',
-            foo:'foo'
+            firstName: '依林',
+            lastName: '蔡',
+            age:19
         })
     },[])
 
@@ -23,12 +24,20 @@ export default function AppForm() {
             <p>{APP_DESCRIPTION}</p>
             <p>{JSON.stringify(appInfo,null,'  ')}</p>
 
-            <p style={{ fontSize: '3em' }}>{`你好，我的名字是${formData.myName}。`}</p>
-            <p style={{ fontSize: '3em' }}>{`foo ${formData.foo}。`}</p>
+            <p style={{ fontSize: '3em' }}>{`大家好。我的姓名是${formData.lastName}${formData.firstName}，今年${formData.age}歲。`}</p>
 
-            <hr />
-            <InputText name='myName' value={formData.myName} onChange={assignValue} />
-            <InputText name='foo' value={formData.foo} onChange={assignValue} />
+            <hr />            
+            <InputText name='firstName' label="First Name"
+                value={formData.firstName}
+                onChange={assignValue} /><br />
+
+            <InputText name='lastName' label="Last Name"
+                value={formData.lastName}
+                onChange={assignValue} /><br />
+
+            <InputText name='age' label="Age"
+                value={formData.age}
+                onChange={assignValue} />
         </Fragment>
     )
 }

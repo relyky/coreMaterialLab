@@ -1,4 +1,4 @@
-ï»¿import { useState, useEffect, useDebugValue } from 'react'
+import { useState, useEffect, useDebugValue } from 'react'
 
 export function useMousePosition() {
     const [position, setPosition] = useState({ x: 0, y: 0 })
@@ -24,7 +24,7 @@ export function useWindowSize() {
     useEffect(() => {
         window.addEventListener("resize", handleResize)
         return () => window.removeEventListener("resize", handleResize)
-    }, []) // ç­‰åŒ componentDidMount
+    }, []) // µ¥¦P componentDidMount
 
     function handleResize(e) {
         setSize({ w: e.target.innerWidth, h: e.target.innerHeight})

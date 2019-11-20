@@ -1,12 +1,15 @@
-﻿import React from 'react'
+﻿import React, { Fragment } from 'react'
 
 export default function InputText(props) {
-    const { name, value, onChange } = props
+    const { name, value, onChange, label } = props
     return (
-        <input type='text'
-            name={name}
-            value={value||''}
-            onChange={(e) => onChange(e.target.name, e.target.value)}
-        />        
+        <Fragment>
+            <label>{label}</label>
+            <input type='text'
+                name={name}
+                value={value || ''}
+                onChange={(e) => onChange(e.target.name, e.target.value)}
+            />
+        </Fragment>
     )
 }
