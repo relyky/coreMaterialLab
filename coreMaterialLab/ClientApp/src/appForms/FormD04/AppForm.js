@@ -29,11 +29,11 @@ export default function AppForm() {
             <hr />            
             <InputText name='firstName' label="First Name"
                 value={formData.firstName}
-                onChange={assignValue} /><br />
+                onChange={assignValue} />
 
             <InputText name='lastName' label="Last Name"
                 value={formData.lastName}
-                onChange={assignValue} /><br />
+                onChange={assignValue} />
 
             <InputText name='age' label="Age"
                 value={formData.age}
