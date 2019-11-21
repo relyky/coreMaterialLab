@@ -1,4 +1,5 @@
 import React, { useReducer, createContext, useContext /*, useDebugValue*/ } from 'react'
+import t from 'typy'
 
 // ====== useReducer ======
 
@@ -25,9 +26,7 @@ function useDataListReducer(initialState) {
 
     // ¥]¸Ë dispatch action
     function addItem(item) {
-        //if (!t(item).isObject) throw new Error(`the type of [item] is invalid, it should be object`)
-
-
+        if (!t(item).isObject) throw new Error('Invalid value type!')
         dispatch({ type: 'ADD_ITEM', item })
     }
 

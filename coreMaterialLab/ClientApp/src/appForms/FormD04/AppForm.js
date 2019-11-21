@@ -1,13 +1,13 @@
 ﻿import React, { Fragment, useEffect } from 'react'
 import useAppInfo from '../../Hooks/useAppInfo'
 import useFormData from '../../Hooks/useFormdData'
-import InputText from './widgets/InputText'
+import { InputText } from './widgets/InputText'
 
 const APP_TITLE = 'FormD04'
 const APP_DESCRIPTION = 'FormData Lab'
 
 export default function AppForm() {
-    const appInfo = useAppInfo()
+    const [appInfo] = useAppInfo()
     const [formData, { assignValue, assignProps }] = useFormData()
 
     useEffect(() => {
@@ -38,6 +38,8 @@ export default function AppForm() {
             <InputText name='age' label="Age"
                 value={formData.age}
                 onChange={assignValue} />
+
+
         </Fragment>
     )
 }

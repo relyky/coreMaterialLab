@@ -1,10 +1,10 @@
 ﻿import React, { Fragment, useEffect } from 'react'
 import useAppInfo from '../../Hooks/useAppInfo'
 import useFormData from '../../Hooks/useFormdData'
-import InputText from '../FormD04/widgets/InputText'
+import { InputText, InputButton } from '../FormD04/widgets/InputText'
 
 export default function DataView01() {
-    const appInfo = useAppInfo()
+    const [appInfo, meta, setMeta] = useAppInfo()
     const [formData, { assignValue, assignProps }] = useFormData()
 
     useEffect(() => {
@@ -34,6 +34,10 @@ export default function DataView01() {
             <InputText name='age' label="Age"
                 value={formData.age}
                 onChange={assignValue} />
+
+            <InputButton onClick={()=>alert('旺旺')}>
+                Default
+            </InputButton>
         </Fragment>
     )
 }

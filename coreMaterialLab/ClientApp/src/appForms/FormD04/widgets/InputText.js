@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -12,9 +13,24 @@ const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(1),
         width: 200,
     },
+    button: {
+        margin: theme.spacing(1),
+    },
 }));
 
-export default function InputText(props) {
+//---------------------------------------------
+export function InputButton(props) {
+    const classes = useStyles()
+    const { onClick } = props
+    return (
+        <Button variant="contained" className={classes.button} onClick={onClick}>
+            {props.children}
+        </Button>
+    )
+}
+
+//---------------------------------------------
+export function InputText(props) {
     const classes = useStyles()
     const { name, value, onChange, label } = props
     return (

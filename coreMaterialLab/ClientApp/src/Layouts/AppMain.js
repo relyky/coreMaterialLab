@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import useAppInfo, { AppInfoProvider } from '../Hooks/useAppInfo'
+import { AppInfoProvider } from '../Hooks/useAppInfo'
 import { FormDataProvider } from '../Hooks/useFormdData'
 
-export default function MainForm({ children }) {
+export default function AppMain({ children }) {
     const [appInfo] = useState({
         userId: 'USER_ID',
         userName: 'USER_NAME'
@@ -16,6 +16,3 @@ export default function MainForm({ children }) {
         </AppInfoProvider>
     )
 }
-
-export { useAppInfo }
-
