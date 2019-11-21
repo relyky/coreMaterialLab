@@ -8,13 +8,19 @@ export default function DataView01() {
     const [formData, { assignValue, assignProps }] = useFormData()
 
     useEffect(() => {
-
         assignProps({
             firstName: '依林',
             lastName: '蔡',
             age: 19
         })
     }, [])
+
+    function handleClick() {
+        setMeta({ f_loading: true })
+        setTimeout(() => {
+            setMeta({ f_loading: undefined })
+        },2000)
+    }
 
     return (
         <Fragment>
@@ -35,9 +41,11 @@ export default function DataView01() {
                 value={formData.age}
                 onChange={assignValue} />
 
-            <InputButton onClick={()=>alert('旺旺')}>
-                Default
+            <InputButton onClick={handleClick}>
+                Click Me
             </InputButton>
+
+            {meta.f_loading && <h1>LOADING</h1>}
         </Fragment>
     )
 }
