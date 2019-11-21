@@ -1,4 +1,4 @@
-﻿import React from 'react'
+﻿import React, { useState } from 'react'
 import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
@@ -11,6 +11,8 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import { NavMenu } from './NavMenu'
+import useAppInfo from '../Hooks/useAppInfo'
+import UIBlocker from 'react-ui-blocker'
 
 const drawerWidth = 240;
 
@@ -72,9 +74,10 @@ const useStyles = makeStyles(theme => ({
 
 /// PersistentDrawerLeft
 export default function Layout(props) {
-    const classes = useStyles();
-    const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
+    const classes = useStyles()
+    const theme = useTheme()
+    const [appInfo, meta] = useAppInfo()
+    const [open, setOpen] = useState(false)
 
     function handleDrawerOpen() {
         setOpen(true)
@@ -86,6 +89,7 @@ export default function Layout(props) {
 
     return (
         <div className={classes.root}>
+            <UIBlocker theme="foldingCube" isVisible={meta.f_blocking} message="Loading.." />
             <CssBaseline />
             <AppBar position="fixed"
                 className={clsx(classes.appBar, { [classes.appBarShift]: open })}>
@@ -110,7 +114,7 @@ export default function Layout(props) {
 
                 {/*Menu*/}
                 <NavMenu />
-                
+
             </Drawer>
 
             <main className={clsx(classes.content, { [classes.contentShift]: open })}>
@@ -122,5 +126,5 @@ export default function Layout(props) {
 
             </main>
         </div>
-    );
+    )
 }

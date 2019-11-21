@@ -7,7 +7,7 @@ export default function useAppInfo() {
 }
 
 export function AppInfoProvider({ children, appInfo /* object */ }) {
-    const [meta, setMeta] = useState({})
+    const [meta, setMeta] = useState({ f_blocking: false })
     return (
         <AppInfoContext.Provider value={[appInfo, meta, setMeta]}>
             {children}
