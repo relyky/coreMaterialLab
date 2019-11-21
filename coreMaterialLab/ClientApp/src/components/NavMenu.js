@@ -62,6 +62,12 @@ export function NavMenu() {
                     </ListItemIcon>
                     <ListItemText primary={`FormD04`} />
                 </ListItem>
+                <ListItem button component={Link} to="/FormE05">
+                    <ListItemIcon>
+                        <MailIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={`FormE05`} />
+                </ListItem>
             </List>
             <Divider />
             <List>
