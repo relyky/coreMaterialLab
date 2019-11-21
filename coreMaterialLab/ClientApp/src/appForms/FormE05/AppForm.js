@@ -1,27 +1,18 @@
-﻿import React, { Fragment, useState, useEffect } from 'react'
-
-const APP_TITLE = 'FormE05'
-const APP_DESCRIPTION = '正反面意見牆。'
+﻿import React from 'react'
+import MainForm from '../../Layouts/MainForm'
+import FormTitle from '../../Layouts/FormTitle'
+import DataView01 from './DataView01'
 
 export default function AppForm() {
-    const [myName, setMyName] = useState('')
-
-    useEffect(() => {
-        setMyName('somebody')
-    }, []) // 等同 componentDidMount
-
-    function handleEvent(e) {
-        setMyName(e.target.value)
-    }
-
     return (
-        <Fragment>
-            <h1>{APP_TITLE}</h1>
-            <p>{APP_DESCRIPTION}</p>
-
-            <p style={{ fontSize: '3em' }}>{`你好，我的名字是${myName}。`}</p>
-            <hr />
-            <input value={myName} onChange={handleEvent} />
-        </Fragment>
+        <MainForm>
+            <FormTitle title={'這是FormE05的抬頭'} />
+            <DataView01 />
+            {/*
+            <DataView02 />
+            <DataView03 />
+            <DataView04 />
+            <DataView05 />*/}
+        </MainForm>
     )
 }

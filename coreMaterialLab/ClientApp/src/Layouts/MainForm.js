@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-import { AppInfoProvider } from '../../Hooks/useAppInfo'
-import { FormDataProvider } from '../../Hooks/useFormdData'
+import useAppInfo, { AppInfoProvider } from '../Hooks/useAppInfo'
+import { FormDataProvider } from '../Hooks/useFormdData'
 
-import AppForm from './AppForm'
-
-export default function appCtx() {
+export default function MainForm({ children }) {
     const [appInfo] = useState({
         userId: 'USER_ID',
         userName: 'USER_NAME'
@@ -13,8 +11,11 @@ export default function appCtx() {
     return (
         <AppInfoProvider appInfo={appInfo}>
             <FormDataProvider>
-                <AppForm />
+                {children}
             </FormDataProvider>
         </AppInfoProvider>
     )
 }
+
+export { useAppInfo }
+
