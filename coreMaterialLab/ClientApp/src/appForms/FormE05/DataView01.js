@@ -2,8 +2,6 @@
 import useAppInfo from '../../Hooks/useAppInfo'
 import useFormData from '../../Hooks/useFormdData'
 import { InputText, InputButton } from '../FormD04/widgets/InputText'
-import BlockUi from 'react-block-ui';
-import 'react-block-ui/style.css';
 
 export default function DataView01() {
     const [appInfo, meta, setMeta] = useAppInfo()
@@ -42,7 +40,6 @@ export default function DataView01() {
 
             {f_loading && <h1>LOADING</h1>}
 
-            <BlockUi tag="div" blocking={f_loading}>
                 <InputText name='firstName' label="First Name"
                     value={formData.firstName}
                     onChange={assignValue} />
@@ -55,8 +52,6 @@ export default function DataView01() {
                 <InputButton onClick={handleClick}>
                     Loading
                 </InputButton>
-            </BlockUi>
-            
 
 
         </Fragment>
