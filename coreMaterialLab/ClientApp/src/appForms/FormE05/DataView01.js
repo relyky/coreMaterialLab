@@ -41,7 +41,6 @@ export default function DataView01() {
             <hr />
 
             {f_loading && <h1>LOADING</h1>}
-            {meta.f_blocking && <h1>BLOCKING</h1>}
 
             <BlockUi tag="div" blocking={f_loading}>
                 <InputText name='firstName' label="First Name"
@@ -56,10 +55,9 @@ export default function DataView01() {
                 <InputButton onClick={handleClick}>
                     Loading
                 </InputButton>
-                <InputButton onClick={handleBlockUI}>
-                    Block UI
-                </InputButton>
             </BlockUi>
+            
+
 
         </Fragment>
     )

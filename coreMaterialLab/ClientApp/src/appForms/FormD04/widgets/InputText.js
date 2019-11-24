@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button'
@@ -21,11 +21,14 @@ const useStyles = makeStyles(theme => ({
 //---------------------------------------------
 export function InputButton(props) {
     const classes = useStyles()
-    const { onClick } = props
+    //const { onClick, color } = props
     return (
-        <Button variant="contained" className={classes.button} onClick={onClick}>
-            {props.children}
-        </Button>
+        <Fragment>
+            {/*<Button variant="contained" className={classes.button} color={color} onClick={onClick}>*/}
+            <Button variant="contained" className={classes.button} {...props}>
+                {props.children}
+            </Button>
+        </Fragment>
     )
 }
 
