@@ -1,4 +1,5 @@
 import React, { useReducer, createContext, useContext /*, useDebugValue*/ } from 'react'
+import t from 'typy'
 
 // ====== useReducer ======
 
@@ -13,8 +14,16 @@ function reducer(state /*formData*/, action) {
             return { ...state, [name]: value }
         }
         case 'ASSIGN_PROPS': {
-            // payload: object
+            // paylaod: object
             return { ...state, ...payload }
+        }
+        case 'ADD_ITEM2': {
+            // name: string
+            // paylaod: object
+            const itemList = t(state[name]).isArray ? state[name].slice() : []
+            itemList.push(payload)
+            console.log('ADD_ITEM2', payload);
+            return { ...state, [name]: itemList }
         }
         default: {
             throw new Error('invalid action.type!')
@@ -28,16 +37,25 @@ function useFormDataReducer(initialState) {
 
     // 包裝 dispatch action
     function assignValue(name, value) {
+        if (!t(name).isString) throw new Error('Invalid value type!')
         dispatch({ type: 'ASSIGN_VALUE', name, value })
     }
 
     // 包裝 dispatch action
     function assignProps(payload) {
+        if (!t(payload).isObject) throw new Error('Invalid value type!')
         dispatch({ type: 'ASSIGN_PROPS', payload })
     }
 
+    // 包裝 dispatch action
+    function addItem2(name, payload) {
+        if (!t(name).isString) throw new Error('Invalid value type!')
+        if (!t(payload).isObject) throw new Error('Invalid value type!')
+        dispatch({ type: 'ADD_ITEM2', name, payload })
+    }
+
     //useDebugValue(state)
-    return [state, { assignValue, assignProps }]
+    return [state, { assignValue, assignProps, addItem2 }]
 }
 
 // ====== createContext ======
