@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
+import Checkbox from '@material-ui/core/Checkbox'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -17,7 +19,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function SimpleList() {
     const [appInfo, meta, setMeta] = useAppInfo()
-    const [formData, { assignValue, assignProps }] = useFormData()
+    const [formData, { assignValue, assignProps, toggleItem2 }] = useFormData()
     const classes = useStyles()
 
     return (
@@ -25,6 +27,9 @@ export default function SimpleList() {
             <List component="nav" aria-label="main mailbox folders">
                 {t(formData.itemList).isArray && formData.itemList.map((item, index) =>
                     <ListItem key={index}>
+                        <ListItemIcon>
+                            <Checkbox checked={item.isChk || false} onChange={e => toggleItem2('itemList', index)} />
+                        </ListItemIcon>
                         <ListItemText primary={item.desc} />
                     </ListItem>
                 )}
