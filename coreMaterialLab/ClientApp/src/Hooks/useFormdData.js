@@ -4,7 +4,7 @@ import t from 'typy'
 // ====== useReducer ======
 
 function reducer(state /*formData*/, action) {
-    console.log('useFormData', { action })
+    //console.log('useFormData', { action })
     const { type, payload, name, value, index } = action
 
     switch (type) {
@@ -21,7 +21,7 @@ function reducer(state /*formData*/, action) {
             // name: string
             // paylaod: object
             const itemList = t(state[name]).isArray ? state[name].slice() : []
-            itemList.push(payload)
+            itemList.push({ ...payload, isNew: true })
             return { ...state, [name]: itemList }
         }
         case 'TOGGLE_ITEM2': {
@@ -29,6 +29,13 @@ function reducer(state /*formData*/, action) {
             // index: integer
             const itemList = t(state[name]).isArray ? state[name].slice() : []
             itemList[index].isChk = !(itemList[index].isChk)            
+            return { ...state, [name]: itemList }
+        }
+        case 'REMOVE_ITEM2': {
+            // name: string
+            // index: integer
+            const itemList = t(state[name]).isArray ? state[name].slice() : []
+            itemList.splice(index, 1)
             return { ...state, [name]: itemList }
         }
         default: {
@@ -67,8 +74,15 @@ function useFormDataReducer(initialState) {
         dispatch({ type: 'TOGGLE_ITEM2', name, index })
     }
 
+    // ¥]¸Ë dispatch action
+    function removeItem2(name, index) {
+        if (!t(name).isString) throw new Error('Invalid value type!')
+        if (!t(index).isNumber) throw new Error('Invalid value type!')
+        dispatch({ type: 'REMOVE_ITEM2', name, index })
+    }
+
     //useDebugValue(state)
-    return [state, { assignValue, assignProps, addItem2, toggleItem2 }]
+    return [state, { assignValue, assignProps, addItem2, toggleItem2, removeItem2 }]
 }
 
 // ====== createContext ======

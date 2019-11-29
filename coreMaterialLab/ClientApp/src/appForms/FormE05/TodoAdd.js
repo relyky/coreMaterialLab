@@ -19,12 +19,14 @@ const useStyles = makeStyles(theme => ({
 export default function TodoAdd() {
     const classes = useStyles()
     //const [appInfo, meta, setMeta] = useAppInfo()
-    const [formData, { assignValue, assignProps, addItem2 }] = useFormData()
+    const [formData, { addItem2 }] = useFormData()
     const [value, setValue] = useState('')
 
     function handleKeyUp(e) {
         // on <Enter>
         if (e.keyCode === 13) {
+            const newValue = value.trim()
+            if (t(newValue).isEmptyString) return;
             const newItem = { desc: value }
             addItem2('itemList', newItem)
             setValue('')
