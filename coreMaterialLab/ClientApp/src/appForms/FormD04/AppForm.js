@@ -7,7 +7,7 @@ const APP_TITLE = 'FormD04'
 const APP_DESCRIPTION = 'FormData Lab'
 
 export default function AppForm() {
-    const [appInfo, meta, setMeta] = useAppInfo()
+    const [appInfo, /*meta*/, setMeta] = useAppInfo()
     const [formData, { assignValue, assignProps }] = useFormData()
 
     useEffect(() => {

@@ -1,6 +1,6 @@
-﻿import React, { useState, useEffect } from 'react'
+﻿import React from 'react'
 import t from 'typy'
-import useAppInfo from '../../Hooks/useAppInfo'
+//import useAppInfo from '../../Hooks/useAppInfo'
 import useFormData from '../../Hooks/useFormdData'
 import { makeStyles } from '@material-ui/core/styles'
 import Checkbox from '@material-ui/core/Checkbox'
@@ -21,8 +21,8 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function SimpleList() {
-    const [appInfo, meta, setMeta] = useAppInfo()
-    const [formData, { assignValue, assignProps, toggleItem2, removeItem2 }] = useFormData()
+    //const [appInfo, meta, setMeta] = useAppInfo()
+    const [formData, { /*assignValue, assignProps,*/ toggleItem2, removeItem2 }] = useFormData()
     const classes = useStyles()
 
     return (

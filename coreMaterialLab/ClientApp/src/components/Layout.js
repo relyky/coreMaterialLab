@@ -76,7 +76,7 @@ const useStyles = makeStyles(theme => ({
 export default function Layout(props) {
     const classes = useStyles()
     const theme = useTheme()
-    const [appInfo, meta] = useAppInfo()
+    const [/*appInfo*/, meta] = useAppInfo()
     const [open, setOpen] = useState(false)
 
     function handleDrawerOpen() {
