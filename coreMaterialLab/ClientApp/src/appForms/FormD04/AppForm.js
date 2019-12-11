@@ -12,8 +12,8 @@ export default function AppForm() {
 
     useEffect(() => {
         assignProps({
-            firstName: '依林',
-            lastName: '蔡',
+            firstName: '美女',
+            lastName: '甄',
             age: 19
         })
     }, [])

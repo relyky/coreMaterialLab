@@ -60,13 +60,19 @@ export function NavMenu() {
                     <ListItemIcon>
                         <MailIcon />
                     </ListItemIcon>
-                    <ListItemText primary={`FormD04`} />
+                    <ListItemText primary={`FormD04 Simple Form`} />
                 </ListItem>
                 <ListItem button component={Link} to="/FormE05">
                     <ListItemIcon>
                         <MailIcon />
                     </ListItemIcon>
-                    <ListItemText primary={`FormE05`} />
+                    <ListItemText primary={`Simple TodoList`} />
+                </ListItem>
+                <ListItem button component={Link} to="/FormF06">
+                    <ListItemIcon>
+                        <MailIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={`useMemo & useCallback`} />
                 </ListItem>
             </List>
             <Divider />
