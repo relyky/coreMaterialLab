@@ -29,6 +29,8 @@
   <ItemGroup>
     <None Remove="ClientApp\package-lock.json" />
     <None Remove="ClientApp\src\appForms\FormB02\AppForm.js~RFf4a1c83.TMP" />
+    <None Remove="ClientApp\src\appForms\FormG07\ExpensiveChild.js" />
+    <None Remove="ClientApp\src\appForms\FormG07\Parent.js" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
