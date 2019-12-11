@@ -4,8 +4,8 @@ export default function WithMemo() {
     const [count, setCount] = useState(1)
     const [val, setValue] = useState('')
 
-    function expensiveCalculate(count,flag) {
-        console.log('compute', { count, flag })
+    function expensiveCalculate(count,tag) {
+        console.log('compute', { count, tag })
         let sum = 0
         for (let i = 0; i < count * 100; i++) {
             sum += i

@@ -72,6 +72,12 @@ export function NavMenu() {
                     <ListItemIcon>
                         <MailIcon />
                     </ListItemIcon>
+                    <ListItemText primary={`useMemo`} />
+                </ListItem>
+                <ListItem button component={Link} to="/FormG07">
+                    <ListItemIcon>
+                        <MailIcon />
+                    </ListItemIcon>
                     <ListItemText primary={`useMemo & useCallback`} />
                 </ListItem>
             </List>

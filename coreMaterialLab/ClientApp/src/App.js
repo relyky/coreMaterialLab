@@ -11,6 +11,7 @@ import FormC03 from './appForms/FormC03/AppForm'
 import FormD04 from './appForms/FormD04/appCtx'
 import FormE05 from './appForms/FormE05/appCtx'
 import FormF06 from './appForms/FormF06/appCtx'
+import FormG07 from './appForms/FormG07/appCtx'
 import { AppInfoProvider } from './Hooks/useAppInfo';
 
 export default function App(props) {
@@ -33,6 +34,7 @@ export default function App(props) {
                     <Route path='/FormD04' component={FormD04} />
                     <Route path='/FormE05' component={FormE05} />
                     <Route path='/FormF06' component={FormF06} />
+                    <Route path='/FormG07' component={FormG07} />
                 </Switch>
             </Layout>
         </AppInfoProvider>
