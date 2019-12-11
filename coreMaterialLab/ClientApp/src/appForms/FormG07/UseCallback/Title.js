@@ -1,12 +1,10 @@
 ﻿import React from 'react'
 
-function Title() {
-    console.log('Title.render')
+export default React.memo(function Title() {
+    console.log('render Title - useCallback Hook')
     return (
         <h2>
             useCallback Hook
         </h2>
     )
-}
-
-export default React.memo(Title)
+})

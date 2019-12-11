@@ -78,7 +78,7 @@ export function NavMenu() {
                     <ListItemIcon>
                         <MailIcon />
                     </ListItemIcon>
-                    <ListItemText primary={`useMemo & useCallback`} />
+                    <ListItemText primary={`useCallback`} />
                 </ListItem>
             </List>
             <Divider />

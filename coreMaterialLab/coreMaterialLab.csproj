@@ -33,6 +33,10 @@
     <None Remove="ClientApp\src\appForms\FormG07\Parent.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ClientApp\src\appForms\FormH08\" />
+  </ItemGroup>
+
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">

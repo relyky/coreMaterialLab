@@ -1,6 +1,6 @@
 ﻿import React from 'react'
 
-function Count({text, count }) {
+export default function Count({ text, count }) {
     console.log(`render Count - ${text}`)
     return (
         <div>
@@ -8,5 +8,3 @@ function Count({text, count }) {
         </div>
     )
 }
-
-export default React.memo(Count)

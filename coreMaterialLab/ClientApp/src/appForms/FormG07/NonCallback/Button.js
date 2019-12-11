@@ -1,6 +1,6 @@
 ﻿import React from 'react'
 
-function Button({ onClick, children }) {
+export default function Button({ onClick, children }) {
     console.log(`render Button - ${children}`)
     return (
         <button onClick={onClick}>
@@ -8,5 +8,3 @@ function Button({ onClick, children }) {
         </button>
     )
 }
-
-export default React.memo(Button)
