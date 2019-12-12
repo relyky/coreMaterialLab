@@ -16,5 +16,7 @@ export default React.forwardRef(function FancyInput(props, ref) {
         }
     }));
 
-    return <input {...props} ref={inputRef} />;
+    return (
+        <input {...props} ref={inputRef} placeholder={inputRef.current.type} />
+    )
 })

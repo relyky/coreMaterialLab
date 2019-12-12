@@ -44,6 +44,12 @@ export function NavMenu() {
                     </ListItemIcon>
                     <ListItemText primary={`FormA01`} />
                 </ListItem>
+                <ListItem button component={Link} to="/FormA02">
+                    <ListItemIcon>
+                        <MailIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={`useEffect`} />
+                </ListItem>
                 <ListItem button component={Link} to="/FormB02">
                     <ListItemIcon>
                         <MailIcon />
@@ -85,6 +91,12 @@ export function NavMenu() {
                         <MailIcon />
                     </ListItemIcon>
                     <ListItemText primary={`useRef`} />
+                </ListItem>
+                <ListItem button component={Link} to="/FormS09">
+                    <ListItemIcon>
+                        <MailIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={`useStore test`} />
                 </ListItem>
             </List>
             <Divider />
