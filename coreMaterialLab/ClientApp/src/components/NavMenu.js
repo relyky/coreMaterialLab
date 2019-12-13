@@ -96,7 +96,13 @@ export function NavMenu() {
                     <ListItemIcon>
                         <MailIcon />
                     </ListItemIcon>
-                    <ListItemText primary={`useStore test`} />
+                    <ListItemText primary={`useStore Test`} />
+                </ListItem>
+                <ListItem button component={Link} to="/FormJ10">
+                    <ListItemIcon>
+                        <MailIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={`useAxios Lab`} />
                 </ListItem>
             </List>
             <Divider />

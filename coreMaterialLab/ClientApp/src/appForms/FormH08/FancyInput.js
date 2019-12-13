@@ -1,4 +1,4 @@
-﻿import React, { useRef, useImperativeHandle } from 'react'
+﻿import React, { useRef, useImperativeHandle, Fragment } from 'react'
 
 export default React.forwardRef(function FancyInput(props, ref) {
     const inputRef = useRef();
@@ -10,13 +10,18 @@ export default React.forwardRef(function FancyInput(props, ref) {
         changeType: (type) => {
             console.log('changeType', type)
             inputRef.current.type = type
+            inputRef.current.placeholder = type
         },
         getType: () => {
             return inputRef.current.type
         }
     }));
 
+    const inputType = (inputRef.current) ? inputRef.current.type : ''
+    console.log('inputType', inputType)
     return (
-        <input {...props} ref={inputRef} placeholder={inputRef.current.type} />
+        <Fragment>
+            <input {...props} ref={inputRef} placeholder={inputType} />
+        </Fragment>
     )
 })

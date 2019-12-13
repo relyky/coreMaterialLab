@@ -15,7 +15,8 @@ import FormF06 from './appForms/FormF06/appCtx'
 import FormG07 from './appForms/FormG07/appCtx'
 import FormH08 from './appForms/FormH08/appCtx'
 import FormS09 from './appForms/FormS09/appCtx'
-import { AppInfoProvider } from './Hooks/useAppInfo';
+import FormJ10 from './appForms/FormJ10/appCtx'
+import { AppInfoProvider } from './Hooks/useAppInfo' 
 
 export default function App(props) {
     const [appInfo] = useState({
@@ -41,6 +42,7 @@ export default function App(props) {
                     <Route path='/FormG07' component={FormG07} />
                     <Route path='/FormH08' component={FormH08} />
                     <Route path='/FormS09' component={FormS09} />
+                    <Route path='/FormJ10' component={FormJ10} />
                 </Switch>
             </Layout>
         </AppInfoProvider>
