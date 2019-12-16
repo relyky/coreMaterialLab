@@ -5,11 +5,15 @@
 * Hooks API Reference 白話文詮釋
 * 語法要點
 * 關於生命週期
+* Hook 的規則
+* 打造你自己的 Hook
 
 # 一些資源
 * [React-Hooks官網](https://zh-hant.reactjs.org/docs/hooks-intro.html)
 * [Hooks API 參考](https://zh-hant.reactjs.org/docs/hooks-reference.html)
 * [Callback Refs](https://zh-hant.reactjs.org/docs/refs-and-the-dom.html#callback-refs)
+* [Hook 的規則](https://zh-hant.reactjs.org/docs/hooks-rules.html)
+* [打造你自己的 Hook](https://zh-hant.reactjs.org/docs/hooks-custom.html)
 
 # JavaScript元件演進
 
@@ -54,7 +58,7 @@ function FooComponnet(props) {
 
 # Hooks API Reference 白話文詮釋
 用白話文詮釋  
-#### Basic Hooks
+### Basic Hooks
 * useState
   * 替代`this.state`。_※注意：為替代非取代。_
 * useEffect
@@ -63,7 +67,7 @@ function FooComponnet(props) {
   * 可以說是React-Hooks最重要的核心應用，很多的加值應用都是由此項目為基礎展開。
 * useContext
   * 資源向下層共享
-#### Additional Hooks
+### Additional Hooks
 * useReducer
   * 可做為`Redux`的簡易替代品。Redux較新的版本也開始支援Hook，但個人認為缺點部份沒有改進優點部份也沒啥加分。
 * useRef
@@ -73,7 +77,7 @@ function FooComponnet(props) {
   * 回傳一個[memoized](https://en.wikipedia.org/wiki/Memoization)的值。
   * to avoid expensive calculations on every render.
   * 可改進畫面重繪時有“昴貴運算”的問題，但用的不好反而失分。
-#### 以下尚未找到非用不可的理由
+### 以下尚未找到非用不可的理由
 * useLayoutEffect
   * 為`useEffect`同步版，當`useEffect`無法滿足時才導入。
 * useCallback
@@ -114,7 +118,7 @@ function Demo(){
   }
 }
 ```
-#### 等同建構式
+### 等同建構式
 ```javascript
 function SimpleView() {
   const [formData,setFormData]=useState()
@@ -129,7 +133,7 @@ function SimpleView() {
 }
 ```
 # 語法要點 - useEffect
-#### useEffect 語法
+### useEffect 語法
 ```javascript
 export function FooComp(props) {
   useEffect(() => {
@@ -144,7 +148,7 @@ export function FooComp(props) {
   ...
 } /* <FooComp show={detail} value={bar} /> */
 ```
-#### useEffect 範例
+### useEffect 範例
 ```javascript
 export function FooComp({show,value,reacOnly,disabled,name,onChange}) {
 
@@ -211,7 +215,7 @@ export default function Counter() {
 - - -
 
 # 語法要點 - useContext
-#### Context簡介
+### Context簡介
 直接看參考文件：[Context](https://zh-hant.reactjs.org/docs/context.html)   
 總之，React Context至少有三個時期的版本。第一版不夠好已被拋棄。於React.v16.3 出了新版 Context 算是勉強可用。到了React.v16.8+加入Hooks版的`useContext`後就好用多了。    
 簡單介紹Context，其作用是把資源共享到其下面的子孫層。   
@@ -220,7 +224,7 @@ export default function Counter() {
 * 典型的應用之二：畫面的`skin schema`切換，共享到所有元件。   
 * 典型的應用之三：使用者登入資訊`loginUserInfo`與授權資訊`access token` 等，共享到所有元件。   
   
-#### Context語法要素說明，真實應用將更複雜一些
+### Context語法要素說明，真實應用將更複雜一些
 ```javascript
 import React, {useState,useContext} from 'react'
 
@@ -268,7 +272,7 @@ function GrandSon() {
     
 # 語法要點 - useMemo
 
-#### useMemo語法要素
+### useMemo語法要素
 ```javsscript
 /// 昂貴的計算函式
 function expensiveCalculate(args) {
@@ -282,7 +286,7 @@ const value = useMemo(()=>{
 }, [args]) // 注意其相依參數需指定，通常與expensiveCalculate的參數相同。
 ```
 
-#### useMemo 說明範例
+### useMemo 說明範例
  ```javascript
  import React, { useState, useMemo } from 'react'
 
@@ -318,4 +322,60 @@ export default function WithMemo() {
 }
  ```
 
+# useCallback
+此 useCallback 過於進階且不易使用，不再細述。
+* useCallback與useMemo機制都是設計做(expensive calculation)最佳化調校。
+* useMemo可用於單一元件內的最佳化；useCallback用於有子、父層溝通的最佳化。
+* 實作useCallback機制時一般都要與React.memo()併用。 但若沒用好可能會變更慢。使用得當可讓子元件不重複無效益的render讓總體上有加速效果。
+* 範例：React Hooks Tutorial - 26 - useCallback Hook (https://www.youtube.com/watch?v=IL82CzlaCys)
+* 參考文章：React Hooks 第一期：聊聊 useCallback (https://zhuanlan.zhihu.com/p/56975681)
+* 參考文章：useMemo与useCallback使用指南 (https://zhuanlan.zhihu.com/p/66166173)
 
+### React.memo()
+```javascript
+/// 讓原有元件支援[memoized](https://en.wikipedia.org/wiki/Memoization)機制
+const MyComponent = React.memo(function MyComponent(props) {
+    /* render when props changed */
+    /* 有昂貴顯示計算的子元件 */
+})
+```
+React.memo 是一個[higher order component](https://zh-hant.reactjs.org/docs/higher-order-components.html)。它跟[React.PureComponent](https://zh-hant.reactjs.org/docs/react-api.html#reactpurecomponent)很類似，但是它是使用在`function component`上而不是給`class component`使用。
+
+# 語法要點 - useRef
+不只是替代`React.createRef()`，還可以做更多。最常用來`focus`輸入元件。
+```javascript
+function TextInputWithFocusButton() {
+  const inputEl = useRef()
+  function handleClick() {
+    inputEl.current.focus() ///<--- 一定要用`current`才可取得該元件的參考。
+  }
+  return <>
+    <input ref={inputEl} type="text" />
+    <button onClick={handleClick}>Focus the input</button>
+  </>
+}
+```
+### Callback Refs
+進階的應用：[Callback Refs](https://zh-hant.reactjs.org/docs/refs-and-the-dom.html#callback-refs)。   
+進階的應用：[我該如何測量一個 DOM node？](https://zh-hant.reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node)
+
+# useDebugValue, useLayoutEffect
+`useDebugValue`, `useLayoutEffect`基本上用不到也不需要。不再細述。
+
+
+# Hook 的規則
+
+# 打造你自己的 Hook
+
+# 來自npm的好用小工具
+* mement (https://momentjs.com/docs/)
+  * 時間演算
+* typy (https://www.npmjs.com/package/typy)   
+  * 型別檢查
+* clsx (https://www.npmjs.com/package/clsx)
+  * 動態指定className  
+#### 進階
+* use-events (https://sandiiarov.github.io/use-events/#/)
+   * 取得環境事件資訊：`useActive`,`useClickOutside`, `useFocus`, `useHover`, `useMousePosition`, `useResizeObserver`, `useTouch`, `useWindowResize`.
+* react-vis (https://uber.github.io/react-vis/)
+   * 資料視覺化。 
