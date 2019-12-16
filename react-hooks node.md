@@ -8,12 +8,17 @@
 * Hook 的規則
 * 打造你自己的 Hook
 
-# 一些資源
+# Reference
 * [React-Hooks官網-介紹 Hook](https://zh-hant.reactjs.org/docs/hooks-intro.html)
 * [Hooks API 參考](https://zh-hant.reactjs.org/docs/hooks-reference.html)
 * [Callback Refs](https://zh-hant.reactjs.org/docs/refs-and-the-dom.html#callback-refs)
 * [Hook 的規則](https://zh-hant.reactjs.org/docs/hooks-rules.html)
 * [打造你自己的 Hook](https://zh-hant.reactjs.org/docs/hooks-custom.html)
+##### 以下參考文件可能會過時，因為有些文章已有些時日，因為react還在進化中
+* [React Hooks 一些紀錄](https://medium.com/@mts40110/react-hooks-%E4%B8%80%E4%BA%9B%E7%B4%80%E9%8C%84-e5476075d9b8)
+* [YouTube: React Hooks Tutorial - 26 - useCallback Hook](https://www.youtube.com/watch?v=IL82CzlaCys)
+* [React Hooks 第一期：聊聊 useCallback](https://zhuanlan.zhihu.com/p/56975681)
+* [useMemo与useCallback使用指南](https://zhuanlan.zhihu.com/p/66166173)
 
 # JavaScript元件演進
 
@@ -24,10 +29,9 @@
 > __Functional-Components + Hooks__   
  &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;(state)      
 
-# 語法賞析
-* 少了什麼？多了什麼？
+# 語法賞析：少了什麼？多了什麼？
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![少了什麼？多了什麼？](https://github.com/relyky/coreMaterialLab/blob/master/%E5%A4%9A%E4%BA%86%E4%BB%80%E9%BA%BC%E5%B0%91%E4%BA%86%E4%BB%80%E9%BA%BC.png)
 
 # 語法基本框架
 ```javascript
@@ -359,7 +363,7 @@ function TextInputWithFocusButton() {
 進階的應用：[Callback Refs](https://zh-hant.reactjs.org/docs/refs-and-the-dom.html#callback-refs)。   
 進階的應用：[我該如何測量一個 DOM node？](https://zh-hant.reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node)
 
-# useImperativeHandle
+# 語法要點 - useImperativeHandle
 * 須與`forwardRef`搭配使用
 * 把子層資源透過`ref`機制送到父層，若非設計進階的“FancyInput(夢幻元件)”其實也用不到。
 
@@ -426,8 +430,8 @@ export default function FancyInputWithFocusButton() {
 ```
 
 # useDebugValue, useLayoutEffect
-`useDebugValue`, `useLayoutEffect`基本上用不到也不需要。不再細述。
-
+`useLayoutEffect` 應該是用不到，可參考[React Hooks 一些紀錄](https://medium.com/@mts40110/react-hooks-%E4%B8%80%E4%BA%9B%E7%B4%80%E9%8C%84-e5476075d9b8)   
+`useDebugValue` 基本上用不到也不需要。不再細述。   
 
 # Hook 的規則
 全文：[Hook 的規則](https://zh-hant.reactjs.org/docs/hooks-rules.html)
