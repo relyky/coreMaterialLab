@@ -216,6 +216,9 @@ export default function Counter() {
 總之，React Context至少有三個時期的版本。第一版不夠好已被拋棄。於React.v16.3 出了新版 Context 算是勉強可用。到了React.v16.8+加入Hooks版的`useContext`後就好用多了。    
 簡單介紹Context，其作用是把資源共享到其下面的子孫層。   
 在Context結構上拆分了`Provider`與`Consumer`兩部份，然而`Context.Consumer`的語法設計的不好，新的`useContext`很好的取代了Consumer的地位。  
+* 典型的應用之一：多國語系應用的語言包`locale`共享到所有元件。   
+* 典型的應用之二：畫面的`skin schema`切換，共享到所有元件。   
+* 典型的應用之三：使用者登入資訊`loginUserInfo`與授權資訊`access token` 等，共享到所有元件。   
   
 #### Context語法要素說明，真實應用將更複雜一些
 ```javascript
@@ -257,10 +260,62 @@ function GrandSon() {
 }
 
 ```
+[參考：一個比較接近真實的useContext應用。](https://gist.github.com/relyky/e8eb491a86c19491309f60a63f2c079e)
 
-# useContext + useReducer => useFormData
-    f(useContext, useReducer) => useformData
+# useReducer
+為[Redux](https://redux.js.org/)的簡易替代品，然應已足夠。在應用上常與`useContext`搭配使用，此文件不再細說。google大神可找到相當多相關文件。
+[一個應用範例：useFormData.js](https://gist.github.com/relyky/34cb4b36cfa6e5af4d9e7a03d280fbc0) 
     
-    f(useContext, AppInfo) => useAppInfo
-    
+# 語法要點 - useMemo
+
+#### useMemo語法要素
+```javsscript
+/// 昂貴的計算函式
+function expensiveCalculate(args) {
+  /* 昂貴的計算，複雜耗時的計算 */
+  /* Closure */
+}
+
+/// 使用useMemo包裏即可 
+const value = useMemo(()=>{ 
+  expensiveCalculate(args)
+}, [args]) // 注意其相依參數需指定，通常與expensiveCalculate的參數相同。
+```
+
+#### useMemo 說明範例
+ ```javascript
+ import React, { useState, useMemo } from 'react'
+
+export default function WithMemo() {
+    const [count, setCount] = useState(1)
+    const [val, setValue] = useState('')
+
+    function expensiveCalculate(count,tag) {
+        console.log('compute', { count, tag })
+        let sum = 0
+        for (let i = 0; i < count * 1000000; i++) {
+            sum += i
+        }
+        return sum;
+    }
+
+    const expensive = expensiveCalculate(count,'') // 直接叫用 
+    const expensiveMemo = useMemo(() => expensiveCalculate(count, 'M'), [count]) //<--- with Memo
+
+    console.log('render')
+    return (
+        <div style={{ borderStyle: 'solid', borderWidth:1, padding:'0.5em' }}>
+
+            <h4>{count} - {expensive} - M{expensiveMemo}</h4>
+            <span>{val}</span>
+
+            <div>
+                <button onClick={() => setCount(count + 1)}>Count</button>
+                <input value={val} onChange={event => setValue(event.target.value)} placeholder='val' />
+            </div>
+        </div>
+    )
+}
+ ```
+
 
