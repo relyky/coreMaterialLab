@@ -150,10 +150,11 @@ export function FooComp(props) {
     }
   },[Object.values(props)] // 相依陣列，triggered when props changed
   ...
-} /* <FooComp show={detail} value={bar} /> */
+}
 ```
 ### useEffect 範例
 ```javascript
+/* <FooComp show={detail} value={bar} /> */
 export function FooComp({show,value,reacOnly,disabled,name,onChange}) {
 
   useEffect(() => {
