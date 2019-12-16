@@ -29,6 +29,7 @@
  &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;(state)      
 
 # 語法賞析：少了什麼？多了什麼？
+整體上來說，與class component原始碼比較，原始碼行數大致可減少一、二成，且原始碼厚度也少一層。
 
 ![少了什麼？多了什麼？](https://github.com/relyky/coreMaterialLab/blob/master/%E5%A4%9A%E4%BA%86%E4%BB%80%E9%BA%BC%E5%B0%91%E4%BA%86%E4%BB%80%E9%BA%BC.png)
 
