@@ -9,7 +9,7 @@
 * 打造你自己的 Hook
 
 # 一些資源
-* [React-Hooks官網](https://zh-hant.reactjs.org/docs/hooks-intro.html)
+* [React-Hooks官網-介紹 Hook](https://zh-hant.reactjs.org/docs/hooks-intro.html)
 * [Hooks API 參考](https://zh-hant.reactjs.org/docs/hooks-reference.html)
 * [Callback Refs](https://zh-hant.reactjs.org/docs/refs-and-the-dom.html#callback-refs)
 * [Hook 的規則](https://zh-hant.reactjs.org/docs/hooks-rules.html)
@@ -364,16 +364,37 @@ function TextInputWithFocusButton() {
 
 
 # Hook 的規則
+全文：[Hook 的規則](https://zh-hant.reactjs.org/docs/hooks-rules.html)
+1. 只在最上層呼叫 Hook
+   *  只能在 function component 中的第一層碼使用，不能在if、while、for 中使用。
+2. 只在 React Function 中呼叫 Hook
+   *  只能在 function component 中、或者 custom hooks 中使用，不能在 class、一般 JS function中使用。
+```javascript
+function FooComponent(porps){
+   useBarHook()
+   
+   if(bar) {
+      useBarHook() //~~ 將無效
+      /* Hooks在if,while,for中無效，邏輯上也不合理 */
+   }
+   
+   return (<div>...</div>)
+} 
+```
 
 # 打造你自己的 Hook
+全文：[打造你自己的 Hook](https://zh-hant.reactjs.org/docs/hooks-custom.html)
+1. 一個自定義的 Hook 是以「use」為開頭命名的 JavaScript function，而且它可能也呼叫其他的 Hook。
+2. 自定義的 Hook 是自然遵循 Hook 設計的規範，而不是 React 的功能。
+3. 每個呼叫 Hook 的都會得到獨立的 state。
 
 # 來自npm的好用小工具
 * mement (https://momentjs.com/docs/)
-  * 時間演算
+   * 時間演算
 * typy (https://www.npmjs.com/package/typy)   
-  * 型別檢查
+   * 型別檢查
 * clsx (https://www.npmjs.com/package/clsx)
-  * 動態指定className  
+   * 動態指定className  
 #### 進階
 * use-events (https://sandiiarov.github.io/use-events/#/)
    * 取得環境事件資訊：`useActive`,`useClickOutside`, `useFocus`, `useHover`, `useMousePosition`, `useResizeObserver`, `useTouch`, `useWindowResize`.
