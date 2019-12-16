@@ -197,18 +197,70 @@ export default function Counter() {
 - - - 
 # 關於生命週期
 1. initial
-  * render first time 
-  * an empty status component 
+   *  render first time 
+   *  an empty status component 
 2. componentDidMount
-  * render second time
-  * __※注意：元件完成初始化的過程就已render了２次__
+   *  render second time
+   *  __※注意：元件完成初始化的過程就已render了２次__
 3. componentDidUpdate
-  * render again and again
-  * 通常要判斷差異條件成立才執行，否則會render到死當。
+   *  render again and again
+   *  通常要判斷差異條件成立才執行，否則會render到死當。
 4. componentWillUnmount
-  * release resource
-  * 通常用來釋放資源。
+   *  release resource
+   *  通常用來釋放資源。
 - - -
 
+# 語法要點 - useContext
+#### Context簡介
+直接看參考文件：[Context](https://zh-hant.reactjs.org/docs/context.html)   
+總之，React Context至少有三個時期的版本。第一版不夠好已被拋棄。於React.v16.3 出了新版 Context 算是勉強可用。到了React.v16.8+加入Hooks版的`useContext`後就好用多了。    
+簡單介紹Context，其作用是把資源共享到其下面的子孫層。   
+在Context結構上拆分了`Provider`與`Consumer`兩部份，然而`Context.Consumer`的語法設計的不好，新的`useContext`很好的取代了Consumer的地位。  
+  
+#### Context語法要素說明，真實應用將更複雜一些
+```javascript
+import React, {useState,useContext} from 'react'
 
+/// 二、需建立context
+const StoreContext = React.createContext()
+
+function App() {
+   const [store,setStore] = useState() // 一、備好共享標的，此例：上層的state。
+   render (
+      /// 二、需Provider給子孫層元件
+      <StoreContext.Provider value={[store,setStore]}>
+          <AppForm/>
+      </StoreContext.Provider>
+   )
+}
+// ------
+function AppForm() {
+   render (<Son/>)
+}
+// ------
+function Son() {
+   render (<GrandSon/>)
+}
+// ------
+function GrandSon() {
+　　/// 三、子孫層元件透過useContext來使用/消費(Consumer)它。
+   const [store,setStore] = useContext(StoreContext)
+   function eventHandler(){
+      setStore(newState)
+   }
+   render (
+      <div>
+         <p>{state}</p>
+         <button onClick=>{eventHandler}>Go</button>
+      </div>
+   )
+}
+
+```
+
+# useContext + useReducer => useFormData
+    f(useContext, useReducer) => useformData
+    
+    f(useContext, AppInfo) => useAppInfo
+    
 
