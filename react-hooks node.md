@@ -3,6 +3,7 @@
 * React v16.8+ 以上才開始支援Hooks
 * 語法賞析
 * Hooks API Reference 白話文詮釋
+* 語法要點
 
 # 一些資源
 * [React-Hooks官網](https://zh-hant.reactjs.org/docs/hooks-intro.html)
@@ -22,6 +23,33 @@
 * 少了什麼？多了什麼？
 
 ![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+
+# 語法基本框架
+```javascript
+import React,{useState,useEffect} from 'react'
+
+/// ※必需是functional component才可支援Hooks
+function FooComponnet(props) {
+  const [state, setState] = useStae(initialState)
+    
+  useEffect(()=>{    
+     /* 初始化 */
+  },[])
+    
+  function eventHandler(e) {
+     /* 訊息處理 */
+     setState(newState)
+  }
+    
+  return (
+     <Fragment>
+        <p>{state}</p>
+        <button onClick={eventHandler}>Go</button>
+     </Fragment>
+  )
+}
+
+```
 
 # Hooks API Reference 白話文詮釋
 用白話文詮釋  
@@ -57,6 +85,91 @@
   * 把子層資源透過`ref`機制送到父層，若非設計進階的“FancyInput(夢幻元件)”其實也用不到。
 * useDebugValue
   * for debug
+
+# 語法要點 - useState
+
+```javascript
+function Demo(){
+  const [state, setState]=useState({})
+  const [counter,setCounter]=useState(0)
+  const [name,setName]=useState('帥哥')
+  const [formData,setFormData]=useState({})
+  const [todoList,setTodoList]=useState([])
+  
+  function eventHandler(){
+    setState(newState) ///※注意：setState()會完全取代原有的值
+  
+    setCounter(counter+1) //大部份可以滿足
+    setCounter(counter => counter+1) //非同步情境時，需用函式版本來更新
+    
+    setName('甄美女')
+    
+    ///※注意：setState()會完全取代原有的值，所以…
+    setFormData({...formData, [name]:value})
+     
+    let todoList = todoList.slice() //copy list
+    /*...list handling...*/
+    setTodoList(todoList)
+  }
+}
+```
+#### 等同建構式
+```javascript
+function SimpleView() {
+  const [formData,setFormData]=useState()
+  
+  /// ※當useState參數以函式帶入時，等同建構式constructor。
+  useState(()=>
+    setFormData({
+      value1:'foo',
+      itemList: [...]
+    }))    
+  ...
+}
+```
+# 語法要點 - useEffect
+```javascript
+export function FooComp(props) {
+  useEffect(() => {
+    // 等同 componentDidMount
+    // 等同 componentDidUpdate
+    // 在大部份的應用下，componentDidMount與componentDidUpdate都是執行相同的動作
+    return () => {
+      // 等同 componentWillUnmount
+      // ※注意：此處回傳一個lamda函式
+    }
+  },[Object.values(props)] // 相依陣列，triggered when props changed
+  ...
+} /* <FooComp show={detail} value={bar} /> */
+```
+```javascript
+export function FooComp({show,value,reacOnly,disabled,name,onChange}) {
+
+  useEffect(() => {
+    // 等同 componentDidMount
+  },[] //※必需致少填入空陣列，否則會一直重繪到死當。
+
+  useEffect(() => {
+    // 等同 componentDidMount
+    // 等同 componentDidUpdate
+  },[show,value,reacOnly,disabled,name,onChange] // triggered when props changed
+
+  // 應用之一：timer
+  useEffect(() => {
+    // 設定計時器 componentDidMount
+    const timerId = setInterval(handleInterval, 1000)
+    return ()=> {
+      // 釋放資源 componentWillUnmount
+      clearInterval(timerId) 
+    }
+  },[]
+  
+  ...
+}
+```
+
+
+
 
 
 - - -
