@@ -48,7 +48,7 @@ function FooComponnet(props) {
      /* 初始化 */
   },[])
     
-  function eventHandler(e) {
+  function handleEvent(e) {
      /* 訊息處理 */
      setState(newState)
   }
@@ -56,7 +56,7 @@ function FooComponnet(props) {
   return (
      <Fragment>
         <p>{state}</p>
-        <button onClick={eventHandler}>Go</button>
+        <button onClick={handleEvent}>Go</button>
      </Fragment>
   )
 }
