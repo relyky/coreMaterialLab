@@ -18,7 +18,6 @@
 * [React Hooks 一些紀錄](https://medium.com/@mts40110/react-hooks-%E4%B8%80%E4%BA%9B%E7%B4%80%E9%8C%84-e5476075d9b8)
 * [YouTube: React Hooks Tutorial - 26 - useCallback Hook](https://www.youtube.com/watch?v=IL82CzlaCys)
 * [React Hooks 第一期：聊聊 useCallback](https://zhuanlan.zhihu.com/p/56975681)
-* [useMemo与useCallback使用指南](https://zhuanlan.zhihu.com/p/66166173)
 
 # JavaScript元件演進
 
