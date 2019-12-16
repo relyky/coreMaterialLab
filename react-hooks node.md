@@ -85,7 +85,7 @@ function FooComponnet(props) {
   * to avoid expensive calculations on every render.
   * 一般需與React.memo()搭配使用，用起來有點麻煩還可能反效果。若非開發工具類的元件或效率太慢的應用大概不須要用到。
   * 目的與`useMemo`相同，差別在useMemo可避免重複元件本身內無效益的昴貴計算；而useCallback可避免重複render無效益的子層元件。
-* useImperativeHandl
+* useImperativeHandle
   * 須與`forwardRef`搭配使用
   * 把子層資源透過`ref`機制送到父層，若非設計進階的“FancyInput(夢幻元件)”其實也用不到。
 * useDebugValue
@@ -358,6 +358,72 @@ function TextInputWithFocusButton() {
 ### Callback Refs
 進階的應用：[Callback Refs](https://zh-hant.reactjs.org/docs/refs-and-the-dom.html#callback-refs)。   
 進階的應用：[我該如何測量一個 DOM node？](https://zh-hant.reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node)
+
+# useImperativeHandle
+* 須與`forwardRef`搭配使用
+* 把子層資源透過`ref`機制送到父層，若非設計進階的“FancyInput(夢幻元件)”其實也用不到。
+
+### 為進階應用，直接看練習用範例
+
+##### 建立一個夢幻元件
+```javascript
+import React, { useRef, useImperativeHandle, Fragment } from 'react'
+
+/// 需搭配使用forwardRef
+export default React.forwardRef(function FancyInput(props, ref) {
+    const inputRef = useRef();
+
+    /// 父層將只能使用 useImperativeHandle 內函的資源
+    useImperativeHandle(ref, () => ({
+        focus: () => {
+            inputRef.current.focus()
+        },
+        changeType: (type) => {
+            console.log('changeType', type)
+            inputRef.current.type = type
+            inputRef.current.placeholder = type
+        },
+        getType: () => {
+            return inputRef.current.type
+        }
+    }));
+
+    const inputType = (inputRef.current) ? inputRef.current.type : ''
+    return (
+        <Fragment>
+            <input {...props} ref={inputRef} placeholder={inputType} />
+        </Fragment>
+    )
+})
+
+```
+##### 使用建立好的夢幻元件
+```javascript
+import React, { Fragment, useRef } from 'react'
+import FancyInput from './FancyInput'
+
+export default function FancyInputWithFocusButton() {
+    const inputEl = useRef()
+
+    function handleFocus() {
+        inputEl.current.focus()
+    }
+
+    function handleChangeType() {
+        /// 因導入useImperativeHandle，故可叫用客製化函式。
+        const type = inputEl.current.getType() 
+        inputEl.current.changeType(type === 'text' ? 'date' : 'text')
+    }
+
+    return (
+        <Fragment>
+            <FancyInput ref={inputEl} type="date" />
+            <button onClick={handleFocus}>Focus the input</button>
+            <button onClick={handleChangeType}>ChangeType</button>
+        </Fragment>
+    )
+}
+```
 
 # useDebugValue, useLayoutEffect
 `useDebugValue`, `useLayoutEffect`基本上用不到也不需要。不再細述。
