@@ -128,6 +128,7 @@ function SimpleView() {
 }
 ```
 # 語法要點 - useEffect
+#### useEffect 語法
 ```javascript
 export function FooComp(props) {
   useEffect(() => {
@@ -142,6 +143,7 @@ export function FooComp(props) {
   ...
 } /* <FooComp show={detail} value={bar} /> */
 ```
+#### useEffect 範例
 ```javascript
 export function FooComp({show,value,reacOnly,disabled,name,onChange}) {
 
@@ -168,8 +170,42 @@ export function FooComp({show,value,reacOnly,disabled,name,onChange}) {
 }
 ```
 
-
-
-
-
+- - - 
+# 關於生命周期
+1. initial
+  * render first time 
+  * an empty status component 
+2. componentDidMount
+  * render second time
+  * __※注意：元件完成初始化的過程就已render了２次__
+3. componentDidUpdate
+  * render again and again
+  * 通常要判斷差異條件成立才執行，否則會render到死當。
+4. componentWillUnmount
+  * release resource
+  * 通常用來釋放資源。
 - - -
+
+# useEffect應用-關於Timer的不同步現象
+```javascript
+export default function Counter() {
+    const [count, setCount] = useState(87)
+    
+    useEffect(() => {
+        const timerId = setInterval(handleInterval, 1000)
+        return () => clearInterval(timerId) // 回傳一個lamda函式
+    }, []); // componentDidMount
+
+    function handleInterval() {
+        console.log('interval', count) 
+        /// 怪奇現象：這個 count
+        setCount(count => count - 1)   
+        /// 與這個 count 不是同一個 count
+    }
+
+    return (
+        <Fragment>{count}</Fragment>
+    )
+}
+```
+
