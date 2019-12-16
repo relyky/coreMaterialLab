@@ -4,6 +4,7 @@
 * 語法賞析
 * Hooks API Reference 白話文詮釋
 * 語法要點
+* 關於生命週期
 
 # 一些資源
 * [React-Hooks官網](https://zh-hant.reactjs.org/docs/hooks-intro.html)
@@ -170,23 +171,7 @@ export function FooComp({show,value,reacOnly,disabled,name,onChange}) {
 }
 ```
 
-- - - 
-# 關於生命周期
-1. initial
-  * render first time 
-  * an empty status component 
-2. componentDidMount
-  * render second time
-  * __※注意：元件完成初始化的過程就已render了２次__
-3. componentDidUpdate
-  * render again and again
-  * 通常要判斷差異條件成立才執行，否則會render到死當。
-4. componentWillUnmount
-  * release resource
-  * 通常用來釋放資源。
-- - -
-
-# useEffect應用-關於Timer的不同步現象
+## useEffect應用-關於Timer的不同步現象
 ```javascript
 export default function Counter() {
     const [count, setCount] = useState(87)
@@ -208,4 +193,22 @@ export default function Counter() {
     )
 }
 ```
+
+- - - 
+# 關於生命週期
+1. initial
+  * render first time 
+  * an empty status component 
+2. componentDidMount
+  * render second time
+  * __※注意：元件完成初始化的過程就已render了２次__
+3. componentDidUpdate
+  * render again and again
+  * 通常要判斷差異條件成立才執行，否則會render到死當。
+4. componentWillUnmount
+  * release resource
+  * 通常用來釋放資源。
+- - -
+
+
 
