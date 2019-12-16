@@ -1,12 +1,15 @@
 # React + Hooks開發指引與觀念
 * 非入門，給已有React開發經驗的人昇級之用
 * React v16.8+ 以上才開始支援Hooks
+* JavaScript元件演進
 * 語法賞析
+* 語法基本框架
 * Hooks API Reference 白話文詮釋
 * 語法要點
 * 關於生命週期
 * Hook 的規則
 * 打造你自己的 Hook
+* 其它：來自npm的好用小工具
 
 # Reference
 * [React-Hooks官網-介紹 Hook](https://zh-hant.reactjs.org/docs/hooks-intro.html)
@@ -331,7 +334,7 @@ export default function WithMemo() {
 此 useCallback 過於進階且不易使用，不再細述。
 * useCallback與useMemo機制都是設計做(expensive calculation)最佳化調校。
 * useMemo可用於單一元件內的最佳化；useCallback用於有子、父層溝通的最佳化。
-* 實作useCallback機制時一般都要與React.memo()併用。 但若沒用好可能會變更慢。使用得當可讓子元件不重複無效益的render讓總體上有加速效果。
+* 實作useCallback機制時一般都要與`React.memo()`併用。 但若沒用好可能會變更慢。使用得當可讓子元件不重複無效益的render讓總體上有加速效果。
 * 範例：React Hooks Tutorial - 26 - useCallback Hook (https://www.youtube.com/watch?v=IL82CzlaCys)
 * 參考文章：React Hooks 第一期：聊聊 useCallback (https://zhuanlan.zhihu.com/p/56975681)
 
