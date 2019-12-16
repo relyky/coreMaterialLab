@@ -334,7 +334,6 @@ export default function WithMemo() {
 * 實作useCallback機制時一般都要與React.memo()併用。 但若沒用好可能會變更慢。使用得當可讓子元件不重複無效益的render讓總體上有加速效果。
 * 範例：React Hooks Tutorial - 26 - useCallback Hook (https://www.youtube.com/watch?v=IL82CzlaCys)
 * 參考文章：React Hooks 第一期：聊聊 useCallback (https://zhuanlan.zhihu.com/p/56975681)
-* 參考文章：useMemo与useCallback使用指南 (https://zhuanlan.zhihu.com/p/66166173)
 
 ### React.memo()
 ```javascript
