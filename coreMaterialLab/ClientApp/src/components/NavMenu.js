@@ -42,7 +42,7 @@ export function NavMenu() {
                     <ListItemIcon>
                         <MailIcon />
                     </ListItemIcon>
-                    <ListItemText primary={`FormA01`} />
+                    <ListItemText primary={`計時器同步`} />
                 </ListItem>
                 <ListItem button component={Link} to="/FormA02">
                     <ListItemIcon>
@@ -61,6 +61,12 @@ export function NavMenu() {
                         <MailIcon />
                     </ListItemIcon>
                     <ListItemText primary={`FormC03`} />
+                </ListItem>
+                <ListItem button component={Link} to="/FormC04">
+                    <ListItemIcon>
+                        <MailIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={`Date Picker`} />
                 </ListItem>
                 <ListItem button component={Link} to="/FormD04">
                     <ListItemIcon>
