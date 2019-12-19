@@ -1,7 +1,8 @@
 ﻿import React, { Fragment, useState, useEffect } from 'react'
-import DatePicker2 from '../../components/DatePicker2'
 import DatePicker from '../../components/DatePicker'
 import { Checkbox, FormGroup, FormControlLabel } from '@material-ui/core'
+import { FormControl, InputLabel, Select, MenuItem, FormHelperText } from '@material-ui/core'
+
 import moment from 'moment'
 
 //import useAppInfo from '../../Hooks/useAppInfo'
@@ -14,6 +15,7 @@ export default function AppForm() {
     const [date1, setDate1] = useState(null)
     const [disabled, setDisabled] = useState(false)
     const [readOnly, setReadOnly] = useState(false)
+    const [locale, setLocale] = useState('zhTW')
 
     useEffect(() => {
         //setDate1('somebody')
@@ -47,6 +49,14 @@ export default function AppForm() {
                 />
             </FormGroup>
 
+            <FormControl>
+                <InputLabel>locale</InputLabel>
+                <Select value={locale} onChange={(e) => setLocale(e.target.value)}>
+                    <MenuItem value='zhTW'>zhTW</MenuItem>
+                    <MenuItem value='enUS'>enUS</MenuItem>
+                </Select>
+            </FormControl>
+
             <hr />
             <h4>react-datepicker</h4>
 
@@ -56,16 +66,9 @@ export default function AppForm() {
                 onChange={handleChange}
                 disabled={disabled}
                 readOnly={readOnly}
+                locale={locale}
             />
 
-            {/*
-            <hr />
-            <h4>react-day-picker</h4>
-            <DatePicker2
-                name='date1'
-                value={date1}
-                onChange={handleChange}
-            />*/}
         </Fragment>
     )
 }
