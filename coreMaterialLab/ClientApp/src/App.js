@@ -17,6 +17,7 @@ import FormG07 from './appForms/FormG07/appCtx'
 import FormH08 from './appForms/FormH08/appCtx'
 import FormS09 from './appForms/FormS09/appCtx'
 import FormJ10 from './appForms/FormJ10/appCtx'
+import FormZ88 from './appForms/FormZ88/appCtx'
 import { AppInfoProvider } from './Hooks/useAppInfo' 
 
 export default function App(props) {
@@ -45,6 +46,7 @@ export default function App(props) {
                     <Route path='/FormH08' component={FormH08} />
                     <Route path='/FormS09' component={FormS09} />
                     <Route path='/FormJ10' component={FormJ10} />
+                    <Route path='/FormZ88' component={FormZ88} />
                 </Switch>
             </Layout>
         </AppInfoProvider>

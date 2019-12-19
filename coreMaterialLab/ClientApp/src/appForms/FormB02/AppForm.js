@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { Hidden } from '@material-ui/core';
 
-import { useMousePosition, useWindowSize } from '../../Hooks/useMousePosition'
+import { useMousePosition, useWindowSize } from '../../Hooks/useEvents'
 
 const APP_TITLE = 'FormB02 Grid'
 const APP_DESCRIPTION = 'Grid Demo'

@@ -110,6 +110,12 @@ export function NavMenu() {
                     </ListItemIcon>
                     <ListItemText primary={`useAxios Lab`} />
                 </ListItem>
+                <ListItem button component={Link} to="/FormZ88">
+                    <ListItemIcon>
+                        <MailIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={`FormZ88`} />
+                </ListItem>
             </List>
             <Divider />
             <List>

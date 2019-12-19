@@ -1,4 +1,5 @@
 import { useState, useEffect, useDebugValue } from 'react'
+import t from 'typy'
 
 export function useMousePosition() {
     const [position, setPosition] = useState({ x: 0, y: 0 })
@@ -32,4 +33,19 @@ export function useWindowSize() {
 
     useDebugValue(size)
     return size
+}
+
+//====================
+//useInterval(() => {
+//    setCount(currentCount => currentCount + 1);
+// delay);
+
+export function useInterval(onInterval, dealy) {
+    if (!t(onInterval).isFunction) throw new Error('Invalid value type!')
+    if (!t(dealy).isNumber) throw new Error('Invalid value type!')
+
+    useEffect(() => {
+        const timer = setInterval(() => onInterval(), dealy)
+        return () => clearInterval(timer)
+    }, [dealy]); // µ¥¦P componentDidMount
 }
