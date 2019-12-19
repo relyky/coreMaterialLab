@@ -1,9 +1,10 @@
 ﻿import React, { Fragment, useState, useEffect } from 'react'
 import DatePicker from '../../components/DatePicker'
 import { Checkbox, FormGroup, FormControlLabel } from '@material-ui/core'
-import { FormControl, InputLabel, Select, MenuItem, FormHelperText } from '@material-ui/core'
+import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core'
 
-import moment from 'moment'
+//import { format, parse } from 'date-fns'
+//import moment from 'moment'
 
 //import useAppInfo from '../../Hooks/useAppInfo'
 //import useFormData from '../../Hooks/useFormdData'
@@ -12,31 +13,18 @@ const APP_TITLE = 'FormC04 Date Picker'
 const APP_DESCRIPTION = 'Date Picker'
 
 export default function AppForm() {
-    const [date1, setDate1] = useState(null)
+    const [date1, setDate1] = useState('')
+    const [date2, setDate2] = useState('')
     const [disabled, setDisabled] = useState(false)
     const [readOnly, setReadOnly] = useState(false)
     const [locale, setLocale] = useState('zhTW')
 
-    useEffect(() => {
-        //setDate1('somebody')
-    }, []) // 等同 componentDidMount
-
-    function handleChange(name, date) {
-        console.log('handleChange', date)
-        setDate1(date)
-    }
-
-    console.log('date1', { date1 })
     return (
         <Fragment>
             <h1>{APP_TITLE}</h1>
             <p>{APP_DESCRIPTION}</p>
 
             <hr />
-            <h5>date1</h5>
-            <h4>{JSON.stringify(date1)}</h4>
-            <h4>{moment(date1).format('YYYY/MM/DD')}</h4>
-            <h4>{JSON.stringify(new Date(moment(date1).format('YYYY/MM/DD')))}</h4>
 
             <FormGroup row>
                 <FormControlLabel label="disabled"
@@ -60,14 +48,29 @@ export default function AppForm() {
             <hr />
             <h4>react-datepicker</h4>
 
+            <label>10碼日期&nbsp;&nbsp;</label>
             <DatePicker
                 name='date1'
                 value={date1}
-                onChange={handleChange}
+                onChange={(name, value) => setDate1(value)}
+            />
+
+            <p>{date1}</p>
+
+            <label>8碼日期&nbsp;&nbsp;</label>
+            <DatePicker
+                name='date2'
+                value={date2}
+                onChange={(name, value) => setDate2(value)}
                 disabled={disabled}
                 readOnly={readOnly}
                 locale={locale}
+                mode='YMD8'
+                minDate="20191210"
+                maxDate="20191228"
             />
+
+            <p>{date2}</p>
 
         </Fragment>
     )

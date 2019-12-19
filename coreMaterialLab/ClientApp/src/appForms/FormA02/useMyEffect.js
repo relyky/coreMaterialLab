@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react'
+﻿import { useEffect } from 'react'
 import t from 'typy'
 
 export default function useMyEffect(effect, deps) {
