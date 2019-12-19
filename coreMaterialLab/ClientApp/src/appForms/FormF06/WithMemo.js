@@ -7,7 +7,7 @@ export default function WithMemo() {
     function expensiveCalculate(count,tag) {
         console.log('compute', { count, tag })
         let sum = 0
-        for (let i = 0; i < count * 100; i++) {
+        for (let i = 0; i < count * 1000000; i++) {
             sum += i
         }
         return sum;
@@ -20,7 +20,7 @@ export default function WithMemo() {
     return (
         <div style={{ borderStyle: 'solid', borderWidth:1, padding:'0.5em' }}>
 
-            <h4>{count} - {expensive} - {expensiveMemo}</h4>
+            <h4>{count} - {expensive} - M{expensiveMemo}</h4>
             <span>{val}</span>
 
             <div>

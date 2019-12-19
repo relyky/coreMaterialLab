@@ -1,8 +1,7 @@
 ﻿import React, { Fragment, useRef } from 'react'
-
 import FancyInput from './FancyInput'
 
-export default function TextInputWithFocusButton() {
+export default function FancyInputWithFocusButton() {
     const inputEl = useRef()
 
     function handleClick() {

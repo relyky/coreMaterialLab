@@ -16,7 +16,7 @@ export default function AppForm() {
 
     useEffect(() => {
         setA(a => a + 1)
-    }) // <--- 不加 dependency array 會出錯。Maximum update depth exceeded
+    },[]) // <--- 不加 dependency array 會出錯。Maximum update depth exceeded
 
     useEffect(() => {
         setB(b => b + 1)
