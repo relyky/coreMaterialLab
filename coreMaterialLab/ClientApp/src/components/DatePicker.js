@@ -1,4 +1,4 @@
-﻿import React, { Fragment } from 'react'
+﻿import React from 'react'
 import PropTypes from 'prop-types'
 import DatePicker, { registerLocale } from 'react-datepicker'
 import { format, parse, isValid } from 'date-fns'

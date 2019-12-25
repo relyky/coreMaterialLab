@@ -104,6 +104,12 @@ export function NavMenu() {
                     </ListItemIcon>
                     <ListItemText primary={`useStore Test`} />
                 </ListItem>
+                <ListItem button component={Link} to="/FormS10">
+                    <ListItemIcon>
+                        <MailIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={`useSessionStorage Lab`} />
+                </ListItem>
                 <ListItem button component={Link} to="/FormJ10">
                     <ListItemIcon>
                         <MailIcon />
