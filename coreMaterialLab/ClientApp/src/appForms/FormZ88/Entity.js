@@ -1,20 +1,17 @@
-﻿import React, { Fragment, useState } from 'react'
+﻿import React from 'react'
+
 //import useAppInfo from '../../Hooks/useAppInfo'
-//import useFormData from '../../Hooks/useFormdData'
+import useFormData from '../../Hooks/useFormdData'
 
-import { useInterval } from '../../Hooks/useWindowResource'
-
-export default function Entity({ label }) {
-    const [amount, setAmount] = useState(1000)
-
-    useInterval(() => {
-        setAmount(amount => setAmount(amount + 1))
-    }, 1000)
+export default function Entity({ name }) {
+    const [formData] = useFormData()
+    const entity = formData[name]
+    const { amount, label } = entity
 
     return (
-        <Fragment>
+        <div>
             <h4>{label}</h4>
-            <p style={{fontSize:'2em'}}>{amount}</p>
-        </Fragment>
+            <p style={{ fontSize: '2em' }}>{amount}</p>
+        </div>
     )
 }

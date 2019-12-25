@@ -1,10 +1,10 @@
 import React from 'react'
 import { FormDataProvider } from '../../Hooks/useFormdData'
-import AppForm from './AppForm'
+import AppForm, { initialFormData } from './AppForm'
 
 export default function appCtx() {
     return (
-        <FormDataProvider>
+        <FormDataProvider initialState={initialFormData}>
             <AppForm />
         </FormDataProvider>
     )
