@@ -6,9 +6,9 @@ import t from 'typy'
 /// const [foo, setFoo] = useSessionStorage('foo')
 /// const [entity, setEntity] = useSessionStorage('entity', { a:'str', b:987654321, list:[1,2,3,4,5,6] })
 
-export function useSessionStorage(key /*string*/, initValue /*string | number | object | undefined */) {
+export function useSessionStorage(key /*string*/, initValue /*string | number | object | null | undefined */) {
     if (!t(key).isString) throw new Error('Invalid value type!')
-    if (!(t(initValue).isUndefined || t(initValue).isNumber || t(initValue).isString || t(initValue).isObject)) throw new Error('Invalid value type!')
+    if (!(t(initValue).isNullOrUndefined || t(initValue).isNumber || t(initValue).isString || t(initValue).isObject)) throw new Error('Invalid value type!')
 
     const [changed, setChanged] = useState(false) // to indicate the "sessionStorage value" has changed.
 
@@ -25,7 +25,7 @@ export function useSessionStorage(key /*string*/, initValue /*string | number | 
     })
 
     function setValue(newValue /*string|number|object*/) {
-        if (!(t(initValue).isNumber || t(initValue).isString || t(initValue).isObject)) throw new Error('Invalid value type!')
+        if (!(t(initValue).isNull || t(initValue).isNumber || t(initValue).isString || t(initValue).isObject)) throw new Error('Invalid value type!')
 
         //console.log('useSessionStorage.setValue', key, newValue)
         /// 若是物件則轉成JSON字串，因為sessionStorage只能存字串。
