@@ -2,7 +2,7 @@
 //import useAppInfo from '../../Hooks/useAppInfo'
 //import useFormData from '../../Hooks/useFormdData'
 
-import { useInterval } from '../../Hooks/useEvents'
+import { useInterval } from '../../Hooks/useWindowResource'
 
 export default function Entity({ label }) {
     const [amount, setAmount] = useState(1000)
