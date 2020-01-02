@@ -3,8 +3,8 @@
 //import useAppInfo from '../../Hooks/useAppInfo'
 import useFormData from '../../Hooks/useFormdData'
 
-const APP_TITLE = 'Say hi'
-const APP_DESCRIPTION = '歡迎光臨。'
+const APP_TITLE = 'FormZ91 dagre'
+const APP_DESCRIPTION = 'dagre-d3 - A D3-based renderer for dagre'
 
 export const initialFormData = { foo: 'foo', bar: 987654321 }
 
@@ -26,7 +26,7 @@ export default function AppForm() {
             <p>{APP_DESCRIPTION}</p>
 
             <p style={{ fontSize: '3em' }}>{`你好，我的名字是${myName}。`}</p>
-            <pre style={{ fontSize: '3em' }}>formData: {JSON.stringify(formData)}</pre>
+            <pre style={{ fontSize: '1.2em' }}>formData: {JSON.stringify(formData,null,' ')}</pre>
             <hr />
             <input value={myName} onChange={handleEvent} />
         </Fragment>

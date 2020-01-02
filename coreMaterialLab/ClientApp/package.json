@@ -9,6 +9,7 @@
     "axios-hooks": "^1.9.0",
     "bootstrap": "^4.4.1",
     "clsx": "^1.0.4",
+    "dagre-d3": "^0.6.4",
     "date-fns": "^2.8.1",
     "gojs": "^2.1.4",
     "gojs-react": "^1.0.5",

@@ -7,7 +7,7 @@ import './App.css';  // contains .diagram-component CSS
 //import useFormData from '../../Hooks/useFormdData'
 
 const APP_TITLE = 'FormZ90'
-const APP_DESCRIPTION = 'gojs'
+const APP_DESCRIPTION = 'gojs lab'
 
 /// This function is responsible for setting up the diagram's initial properties and any templates.
 function initDiagram() {

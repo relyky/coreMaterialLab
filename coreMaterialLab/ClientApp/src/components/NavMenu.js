@@ -128,6 +128,12 @@ export function NavMenu() {
                     </ListItemIcon>
                     <ListItemText primary={`FormZ90 GoJS`} />
                 </ListItem>
+                <ListItem button component={Link} to="/FormZ91">
+                    <ListItemIcon>
+                        <MailIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={`FormZ91 dagre`} />
+                </ListItem>
             </List>
             <Divider />
             <List>
