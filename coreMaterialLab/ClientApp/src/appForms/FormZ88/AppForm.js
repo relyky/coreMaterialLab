@@ -4,6 +4,7 @@ import Entity from './Entity'
 //import useAppInfo from '../../Hooks/useAppInfo'
 import useFormData from '../../Hooks/useFormdData'
 import { useInterval } from '../../Hooks/useWindowResource'
+import useAppInfo from '../../Hooks/useAppInfo'
 
 const APP_TITLE = 'FormZ88 交易'
 const APP_DESCRIPTION = '交易'
@@ -20,6 +21,7 @@ export const initialFormData = {
 }
 
 export default function AppForm() {
+    const [appInfo] = useAppInfo()
     const [formData, { assignProps }] = useFormData()
 
     useInterval(() => {
@@ -35,10 +37,12 @@ export default function AppForm() {
         })
     }
 
+    console.log('appInfo', { appInfo })
     return (
         <Fragment>
             <h1>{APP_TITLE}</h1>
             <p>{APP_DESCRIPTION}</p>
+
             
             <Entity name='people' />
             <Entity name='food' />

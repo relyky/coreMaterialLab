@@ -23,10 +23,11 @@ import FormZ90 from './appForms/FormZ90/appCtx'
 import FormZ91 from './appForms/FormZ91/appCtx'
 import { AppInfoProvider } from './Hooks/useAppInfo' 
 
-export default function App(props) {
+export default function App({ requestVerificationToken }) {
     const [appInfo] = useState({
         userId: 'USER_ID',
-        userName: 'USER_NAME'
+        userName: 'USER_NAME',
+        requestVerificationToken: requestVerificationToken
     })
 
     return (
