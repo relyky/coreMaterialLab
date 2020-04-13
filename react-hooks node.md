@@ -31,6 +31,9 @@
 > __Functional-Components + Hooks__   
  &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;(state)      
 
+### 重要關念 
+* [immutable object](https://en.wikipedia.org/wiki/Immutable_object)
+
 # 語法賞析：少了什麼？多了什麼？
 整體上來說，與class component原始碼比較，原始碼行數大致可減少一、二成，且原始碼厚度也少一層。
 
@@ -441,7 +444,7 @@ export default function FancyInputWithFocusButton() {
 # Hook 的規則
 全文：[Hook 的規則](https://zh-hant.reactjs.org/docs/hooks-rules.html)
 1. 只在最上層呼叫 Hook
-   *  只能在 function component 中的第一層碼使用，不能在if、while、for 中使用。
+   *  只能在 function component 中的第一層陳述句(statement)使用，不能在if、while、for 中使用。
 2. 只在 React Function 中呼叫 Hook
    *  只能在 function component 中、或者 custom hooks 中使用，不能在 class、一般 JS function中使用。
 ```javascript
@@ -465,7 +468,9 @@ function FooComponent(porps){
 
 # 來自npm的好用小工具
 * mement (https://momentjs.com/docs/)
-   * 時間演算
+   * 時間演算, 將[Date object]物件轉換成[moment object]再高階地運算時間。
+* date-fns (https://date-fns.org/)
+   * 時間演算, 為[Date object]延伸高階地時間運算函式。
 * typy (https://www.npmjs.com/package/typy)   
    * 型別檢查
 * clsx (https://www.npmjs.com/package/clsx)
