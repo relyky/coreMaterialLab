@@ -73,7 +73,8 @@ function FooComponnet(props) {
   * 非同步觸發`render`。
   * 可以說是React-Hooks最重要的核心應用，很多的加值應用都是由此項目為基礎展開。
 * useContext
-  * 資源向下層共享
+  * 資源向下層共享資源。
+  * 若在應用時擺在最上層，則等同全域共享資源。
 ### Additional Hooks
 * useReducer
   * 可做為`Redux`的簡易替代品。Redux較新的版本也開始支援Hook，但個人認為缺點部份沒有改進優點部份也沒啥加分。
@@ -85,6 +86,7 @@ function FooComponnet(props) {
   * to avoid expensive calculations on every render.
   * 可改進畫面重繪時有“昴貴運算”的問題，但用的不好反而失分。
 ### 以下尚未找到非用不可的理由
+* 補充(2020-04-13)：在之後更多的試用後，發現全部都用得到。
 * useLayoutEffect
   * 為`useEffect`同步版，當`useEffect`無法滿足時才導入。
 * useCallback
